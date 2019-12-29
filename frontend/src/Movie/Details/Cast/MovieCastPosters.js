@@ -4,7 +4,7 @@ import { Grid, WindowScroller } from 'react-virtualized';
 import hasDifferentItemsOrOrder from 'Utilities/Object/hasDifferentItemsOrOrder';
 import dimensions from 'Styles/Variables/dimensions';
 import Measure from 'Components/Measure';
-import MovieCastPoster from './MovieCastPoster';
+import MovieCastPosterConnector from './MovieCastPosterConnector';
 import styles from './MovieCastPosters.css';
 
 // Poster container dimensions
@@ -141,12 +141,12 @@ class MovieCastPosters extends Component {
         key={key}
         style={style}
       >
-        <MovieCastPoster
+        <MovieCastPosterConnector
           key={movie.order}
           posterWidth={posterWidth}
           posterHeight={posterHeight}
-          castId={movie.tmdbId}
-          castName={movie.name}
+          tmdbId={movie.tmdbId}
+          personName={movie.personName}
           character={movie.character}
           images={movie.images}
         />

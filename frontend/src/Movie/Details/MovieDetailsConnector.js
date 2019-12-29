@@ -12,6 +12,7 @@ import { fetchMovieFiles, clearMovieFiles } from 'Store/Actions/movieFileActions
 import { fetchMoviePeople, clearMoviePeople } from 'Store/Actions/moviePeopleActions';
 import { toggleMovieMonitored } from 'Store/Actions/movieActions';
 import { fetchQueueDetails, clearQueueDetails } from 'Store/Actions/queueActions';
+import { fetchNetImportSchema } from 'Store/Actions/settingsActions';
 import { clearReleases } from 'Store/Actions/releaseActions';
 import { executeCommand } from 'Store/Actions/commandActions';
 import * as commandNames from 'Commands/commandNames';
@@ -142,6 +143,7 @@ const mapDispatchToProps = {
   fetchMoviePeople,
   clearMoviePeople,
   clearReleases,
+  fetchNetImportSchema,
   toggleMovieMonitored,
   fetchQueueDetails,
   clearQueueDetails,
@@ -199,6 +201,7 @@ class MovieDetailsConnector extends Component {
     this.props.fetchMovieFiles({ movieId });
     this.props.fetchMoviePeople({ movieId });
     this.props.fetchQueueDetails({ movieId });
+    this.props.fetchNetImportSchema();
   }
 
   unpopulate = () => {
@@ -264,6 +267,7 @@ MovieDetailsConnector.propTypes = {
   toggleMovieMonitored: PropTypes.func.isRequired,
   fetchQueueDetails: PropTypes.func.isRequired,
   clearQueueDetails: PropTypes.func.isRequired,
+  fetchNetImportSchema: PropTypes.func.isRequired,
   executeCommand: PropTypes.func.isRequired
 };
 
