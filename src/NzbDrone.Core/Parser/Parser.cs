@@ -328,15 +328,8 @@ namespace NzbDrone.Core.Parser
 
         public static string ReplaceGermanUmlauts(string s)
         {
-            var t = s;
-            t = t.Replace("ä", "a");
-            t = t.Replace("ö", "o");
-            t = t.Replace("ü", "u");
-            t = t.Replace("Ä", "A");
-            t = t.Replace("Ö", "O");
-            t = t.Replace("Ü", "U");
-            t = t.Replace("ß", "ss");
-            return t;
+            Logger.Debug("ReplaceGermanUmlauts func {0} to {1}", s, s.RemoveDiacritics());
+            return s.RemoveDiacritics();
         }
 
         public static string NormalizeImdbId(string imdbId)
