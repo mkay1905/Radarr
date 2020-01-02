@@ -202,9 +202,9 @@ namespace NzbDrone.Core.Parser
 
         private MappingResult GetMovie(ParsedMovieInfo parsedMovieInfo, string imdbId, SearchCriteriaBase searchCriteria)
         {
-            _logger.Debug($"{parsedMovieInfo.MovieTitle}");
-            // TODO: Answer me this: Wouldn't it be smarter to start out looking for a movie if we have an ImDb Id?
+            _logger.Debug($" DEBUG GetMovie: {parsedMovieInfo.MovieTitle}");
 
+            // TODO: Answer me this: Wouldn't it be smarter to start out looking for a movie if we have an ImDb Id?
             MappingResult result = null;
             if (!string.IsNullOrWhiteSpace(imdbId) && imdbId != "0")
             {

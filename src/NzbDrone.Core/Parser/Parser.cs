@@ -330,7 +330,6 @@ namespace NzbDrone.Core.Parser
         public static string ReplaceGermanUmlauts(string s)
         {
             string title_without_diacritics = s.RemoveDiacritics();
-            Logger.Debug("ReplaceGermanUmlauts func {0} to {1}", s, title_without_diacritics);
             return title_without_diacritics;
         }
 
