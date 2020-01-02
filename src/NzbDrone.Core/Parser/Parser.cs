@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Diacritics;
 using NLog;
 using NzbDrone.Common.Extensions;
 using NzbDrone.Common.Instrumentation;
@@ -328,12 +329,12 @@ namespace NzbDrone.Core.Parser
         public static string ReplaceGermanUmlauts(string s)
         {
             var t = s;
-            t = t.Replace("ä", "ae");
-            t = t.Replace("ö", "oe");
-            t = t.Replace("ü", "ue");
-            t = t.Replace("Ä", "Ae");
-            t = t.Replace("Ö", "Oe");
-            t = t.Replace("Ü", "Ue");
+            t = t.Replace("ä", "a");
+            t = t.Replace("ö", "o");
+            t = t.Replace("ü", "u");
+            t = t.Replace("Ä", "A");
+            t = t.Replace("Ö", "O");
+            t = t.Replace("Ü", "U");
             t = t.Replace("ß", "ss");
             return t;
         }
