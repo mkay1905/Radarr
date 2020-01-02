@@ -173,8 +173,9 @@ namespace NzbDrone.Core.Parser
                 {
                     return null;
                 }
+
                 title = title.RemoveDiacritics();
-                Logger.info("Parsing string '{0}'", title);
+                Logger.Debug("Parsing string '{0}'", title);
 
                 if (ReversedTitleRegex.IsMatch(title))
                 {
@@ -183,7 +184,7 @@ namespace NzbDrone.Core.Parser
 
                     title = new string(titleWithoutExtension) + title.Substring(titleWithoutExtension.Length);
 
-                    Logger.info("Reversed name detected. Converted to '{0}'", title);
+                    Logger.Debug("Reversed name detected. Converted to '{0}'", title);
                 }
 
                 var releaseTitle = RemoveFileExtension(title);
@@ -329,7 +330,7 @@ namespace NzbDrone.Core.Parser
         public static string ReplaceGermanUmlauts(string s)
         {
             string title_without_diacritics = s.RemoveDiacritics();
-            Logger.info("ReplaceGermanUmlauts func {0} to {1}", s, title_without_diacritics);
+            Logger.Debug("ReplaceGermanUmlauts func {0} to {1}", s, title_without_diacritics);
             return title_without_diacritics;
         }
 
@@ -521,7 +522,7 @@ namespace NzbDrone.Core.Parser
         {
             if (title.ToLower().Contains("password") && title.ToLower().Contains("yenc"))
             {
-                Logger.Debug("");
+                Logger.Debug("ValidateBeforeParsing");
                 return false;
             }
 
