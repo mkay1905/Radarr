@@ -328,8 +328,9 @@ namespace NzbDrone.Core.Parser
 
         public static string ReplaceGermanUmlauts(string s)
         {
-            Logger.Debug("ReplaceGermanUmlauts func {0} to {1}", s, s.RemoveDiacritics());
-            return s.RemoveDiacritics();
+            string title_without_diacritics = s.RemoveDiacritics();
+            Logger.Debug("ReplaceGermanUmlauts func {0} to {1}", s, title_without_diacritics);
+            return title_without_diacritics;
         }
 
         public static string NormalizeImdbId(string imdbId)
