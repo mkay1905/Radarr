@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using NzbDrone.Common.Extensions;
 using NzbDrone.Core.Parser.Model;
+using Diacritics.Extensions;
 using NLog;
 using NzbDrone.Common.Instrumentation;
 #if !LIBRARY
@@ -341,11 +342,11 @@ namespace NzbDrone.Core.Parser
         {
             var t = s;
             t = t.Replace("ä", "ae");
-            t = t.Replace("ö", "oe");
-            t = t.Replace("ü", "ue");
-            t = t.Replace("Ä", "Ae");
-            t = t.Replace("Ö", "Oe");
-            t = t.Replace("Ü", "Ue");
+            t = t.Replace("ö", "o");
+            t = t.Replace("ü", "u");
+            t = t.Replace("Ä", "A");
+            t = t.Replace("Ö", "O");
+            t = t.Replace("Ü", "U");
             t = t.Replace("ß", "ss");
             return t;
         }
