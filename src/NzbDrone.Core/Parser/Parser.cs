@@ -173,8 +173,8 @@ namespace NzbDrone.Core.Parser
                 {
                     return null;
                 }
-
-                Logger.Debug("Parsing string '{0}'", title);
+                title = title.RemoveDiacritics();
+                Logger.info("Parsing string '{0}'", title);
 
                 if (ReversedTitleRegex.IsMatch(title))
                 {
@@ -183,7 +183,7 @@ namespace NzbDrone.Core.Parser
 
                     title = new string(titleWithoutExtension) + title.Substring(titleWithoutExtension.Length);
 
-                    Logger.Debug("Reversed name detected. Converted to '{0}'", title);
+                    Logger.info("Reversed name detected. Converted to '{0}'", title);
                 }
 
                 var releaseTitle = RemoveFileExtension(title);
@@ -329,7 +329,7 @@ namespace NzbDrone.Core.Parser
         public static string ReplaceGermanUmlauts(string s)
         {
             string title_without_diacritics = s.RemoveDiacritics();
-            Logger.Debug("ReplaceGermanUmlauts func {0} to {1}", s, title_without_diacritics);
+            Logger.info("ReplaceGermanUmlauts func {0} to {1}", s, title_without_diacritics);
             return title_without_diacritics;
         }
 
