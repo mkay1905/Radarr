@@ -61,6 +61,7 @@ namespace NzbDrone.Core.Parser
 
         public ParsedMovieInfo ParseMovieInfo(string title, List<object> helpers)
         {
+            _logger.Debug($" DEBUG ParseMovieInfo: {title}");
             var result = Parser.ParseMovieTitle(title, _config.ParsingLeniency > 0);
 
             if (result == null)
@@ -75,6 +76,7 @@ namespace NzbDrone.Core.Parser
 
         public ParsedMovieInfo EnhanceMovieInfo(ParsedMovieInfo minimalInfo, List<object> helpers = null)
         {
+            _logger.Debug($" DEBUG ParseMovieInfo: {minimalInfo}");
             if (helpers != null)
             {
                 minimalInfo = AugmentMovieInfo(minimalInfo, helpers);
@@ -168,6 +170,7 @@ namespace NzbDrone.Core.Parser
 
         public Movie GetMovie(string title)
         {
+            _logger.Debug($" DEBUG GetMovie: {title}");
             var parsedMovieInfo = Parser.ParseMovieTitle(title, _config.ParsingLeniency > 0);
 
             if (parsedMovieInfo == null)
