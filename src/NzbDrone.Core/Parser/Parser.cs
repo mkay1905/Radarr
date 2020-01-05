@@ -398,6 +398,7 @@ namespace NzbDrone.Core.Parser
             title = DuplicateSpacesRegex.Replace(title, " ");
             title = SpecialCharRegex.Replace(title, string.Empty);
 
+            title = title.RemoveDiacritics();
             return title.Trim().ToLower();
         }
 
