@@ -73,7 +73,6 @@ namespace NzbDrone.Core.DecisionEngine
                 try
                 {
                     var parsedMovieInfo = _parsingService.ParseMovieInfo(report.Title, new List<object> { report });
-
                     MappingResult result = null;
 
                     if (parsedMovieInfo == null || parsedMovieInfo.MovieTitle.IsNullOrWhiteSpace())
@@ -97,6 +96,7 @@ namespace NzbDrone.Core.DecisionEngine
                             result = new MappingResult { MappingResultType = MappingResultType.NotParsable };
                             result.Movie = null; //To ensure we have a remote movie, else null exception on next line!
                             result.RemoteMovie.ParsedMovieInfo = parsedMovieInfo;
+                            _logger.Debug($" DEBUG TOTOTOTOTOTO: {parsedMovieInfo}");
                         }
                     }
                     else
@@ -104,6 +104,7 @@ namespace NzbDrone.Core.DecisionEngine
                         result = _parsingService.Map(parsedMovieInfo, report.ImdbId.ToString(), searchCriteria);
                     }
 
+                    _logger.Debug($" DEBUG result.ReleaseName: {report.Title}");
                     result.ReleaseName = report.Title;
                     var remoteMovie = result.RemoteMovie;
 
