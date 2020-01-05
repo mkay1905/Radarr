@@ -321,13 +321,17 @@ namespace NzbDrone.Core.Parser
             List<string> possibleTitles = new List<string>();
 
             possibleTitles.Add(searchCriteria.Movie.CleanTitle);
+            _logger.Debug($" DEBUG TryGetMovieBySearchCriteria: {parsedMovieInfo}");
 
             foreach (AlternativeTitle altTitle in searchCriteria.Movie.AlternativeTitles)
             {
+                _logger.Debug($" DEBUG TryGetMovieBySearchCriteria: {altTitle.CleanTitle}");
                 possibleTitles.Add(altTitle.CleanTitle);
             }
 
             string cleanTitle = parsedMovieInfo.MovieTitle.CleanSeriesTitle();
+            _logger.Debug($" DEBUG TryGetMovieBySearchCriteria: {cleanTitle}");
+            _logger.Debug($" DEBUG TryGetMovieBySearchCriteria: {possibleTitles}");
 
             foreach (string title in possibleTitles)
             {
