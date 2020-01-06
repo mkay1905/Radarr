@@ -54,13 +54,16 @@ namespace NzbDrone.Common.Disk
         {
             Ensure.That(sourcePath, () => sourcePath).IsValidPath();
             Ensure.That(targetPath, () => targetPath).IsValidPath();
+            _logger.Debug("tototoottoto");
 
             if (mode == TransferMode.Move && !_diskProvider.FolderExists(targetPath))
             {
+                 _logger.Debug("tototoottoto2");
                 if (verificationMode == DiskTransferVerificationMode.TryTransactional || verificationMode == DiskTransferVerificationMode.VerifyOnly)
                 {
                     var sourceMount = _diskProvider.GetMount(sourcePath);
                     var targetMount = _diskProvider.GetMount(targetPath);
+                     _logger.Debug("tototoottoto3");
 
                     // If we're on the same mount, do a simple folder move.
                     if (sourceMount != null && targetMount != null && sourceMount.RootDirectory == targetMount.RootDirectory)
@@ -78,6 +81,7 @@ namespace NzbDrone.Common.Disk
             }
 
             var result = mode;
+             _logger.Debug("result{0}", result);
 
             foreach (var subDir in _diskProvider.GetDirectoryInfos(sourcePath))
             {
