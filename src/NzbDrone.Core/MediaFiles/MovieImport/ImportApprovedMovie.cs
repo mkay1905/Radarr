@@ -103,34 +103,40 @@ namespace NzbDrone.Core.MediaFiles.MovieImport
                     if (newDownload)
                     {
                         movieFile.SceneName = GetSceneName(downloadClientItem, localMovie);
-
+                        _logger.Debug("hehehehehehhehehehehehhehe");
                         var moveResult = _movieFileUpgrader.UpgradeMovieFile(movieFile, localMovie, copyOnly); //TODO: Check if this works
                         oldFiles = moveResult.OldFiles;
                     }
                     else
                     {
+                        _logger.Debug("hehehehehehhehehehehehhehe2");
                         movieFile.RelativePath = localMovie.Movie.Path.GetRelativePath(movieFile.Path);
                     }
 
+                    _logger.Debug("hehehehehehhehehehehehhehe3");
                     _mediaFileService.Add(movieFile);
                     importResults.Add(new ImportResult(importDecision));
 
                     if (newDownload)
                     {
+                        _logger.Debug("hehehehehehhehehehehehhehe4");
                         _extraService.ImportMovie(localMovie, movieFile, copyOnly);
                     }
 
                     if (downloadClientItem != null)
                     {
+                        _logger.Debug("hehehehehehhehehehehehhehe5");
                         _eventAggregator.PublishEvent(new MovieImportedEvent(localMovie, movieFile, newDownload, downloadClientItem.DownloadClient, downloadClientItem.DownloadId));
                     }
                     else
                     {
+                        _logger.Debug("hehehehehehhehehehehehhehe6");
                         _eventAggregator.PublishEvent(new MovieImportedEvent(localMovie, movieFile, newDownload));
                     }
 
                     if (newDownload)
                     {
+                        _logger.Debug("hehehehehehhehehehehehhehe7");
                         _eventAggregator.PublishEvent(new MovieDownloadedEvent(localMovie, movieFile, oldFiles, downloadClientItem));
                     }
                 }
